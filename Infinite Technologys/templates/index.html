@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <title>Infinite Technology</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #31393C;
+      color: #f0f0f0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header Navbar Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: rgba(41, 43, 44, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00BFFF;
+    }
+
+    .logo img {
+      height: 40px;
+      width: 50px;
+      margin-right: 10px;
+      filter: drop-shadow(0 0 2px #00BFFF);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .nav-links li a:hover {
+      background-color: #00BFFF;
+      box-shadow: 0 4px 10px rgba(0, 191, 255, 0.3);
+    }
+
+    .quote-btn {
+      background: linear-gradient(to right, #00BFFF, #007BFF);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: 0 0 10px rgba(0, 191, 255, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .quote-btn:hover {
+      background: #007BFF;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.6);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      background: none;
+      border: none;
+    }
+
+    @media (max-width: 992px) {
+      .nav-menu {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(41, 43, 44, 0.98);
+        padding: 15px 20px;
+        display: none;
+      }
+
+      .nav-menu.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+  position: relative;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+  padding-top: 110px; /* to clear navbar */
+  display: flex;
+  align-items: flex-end;  /* align overlay at bottom */
+  justify-content: flex-end; /* align overlay to left */
+}
+
+.hero-overlay {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  max-width: 450px;
+  padding: 20px 30px; 
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  color: #fff;
+  z-index: 1;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 0.8rem;
+  color: #00BFFF;
+}
+
+.hero-overlay p {
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
+    /* Introduction Section */
+    .intro-content {
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+  justify-content: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.intro-text {
+  flex: 1 1 400px;
+}
+
+.intro-image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.intro-image img {
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  max-width: 100%;
+  height: auto;
+}
+
+
+    /* Why Choose Us Section */
+    .why-us {
+      padding: 4rem 2rem;
+      background-color: #31393C;
+    }
+
+    .why-us h2 {
+      text-align: center;
+      color: #2176FF;
+      margin-bottom: 2rem;
+    }
+
+    .why-us ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+    }
+
+    .why-us li {
+      background: #2a2f31;
+      padding: 1.5rem;
+      border-left: 5px solid #2176FF;
+      border-radius: 8px;
+      width: 280px;
+      transition: background 0.3s ease;
+    }
+
+    .why-us li:hover {
+      background: #393f42;
+    }
+
+    .why-us li h3 {
+      color: #33A1FD;
+      margin-bottom: 0.5rem;
+    }
+
+    .why-us li img {
+  display: block;
+  margin: 0 auto 10px;
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 3px #33A1FD);
+}
+
+
+    /* Call to Action */
+    .cta-section {
+      background: #2176FF;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      margin-bottom: 1rem;
+    }
+
+    .cta-section a {
+      display: inline-block;
+      background: #fff;
+      color: #2176FF;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .cta-section a:hover {
+      background: #e0e0e0;
+      color: #000;
+    }
+
+    /* Footer */
+    .footer {
+  background: linear-gradient(to right, #1c1c1c, #111);
+  color: #ccc;
+  padding: 3rem 1rem 1rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-column {
+  flex: 1 1 250px;
+}
+
+.footer-column h3,
+.footer-column h4 {
+  color: #00BFFF;
+  margin-bottom: 1rem;
+}
+
+.footer-column p,
+.footer-column ul li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #00BFFF;
+}
+
+.social-icons {
+  margin-top: 1rem;
+}
+
+.social-icons a {
+  margin-right: 15px;
+  color: #bbb;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #00BFFF;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .footer-column ul li {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+    display: flex;
+  }
+}
+
+.footer-column h3, .footer-column h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-column p,
+.footer-column ul li {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.footer-column ul li i {
+  color: #00BFFF;
+  min-width: 20px;
+}
+
+.footer-column ul li a {
+  display: flex;
+  align-items: center;
+}
+
+.footer-column ul li a:hover i {
+  color: #00BFFF;
+}
+
+@media (max-width: 480px) {
+  .footer-column {
+    flex: 1 1 100%;
+  }
+
+  .footer-column h3,
+  .footer-column h4 {
+    margin-top: 1rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <!-- You can add a logo image here if you want -->
+      <img src="../static/gc.jpeg" alt="Logo Icon" />
+      Infinite Technology
+    </div>
+
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <nav id="nav-menu" class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/services">Services</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="#">Industries</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+      <a href="#" class="quote-btn">Get a Quote</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="https://cdn.videvo.net/videvo_files/video/free/2018-10/small_watermarked/180930_01_Futuristic_Technology_4k_005_preview.webm" type="video/webm" />
+    <source src="https://cdn.videvo.net/videvo_files/video/free/2018-10/small_watermarked/180930_01_Futuristic_Technology_4k_005_preview.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-overlay">
+    <h1>Empowering Your Digital Future</h1>
+    <p>We deliver cutting-edge IT solutions tailored to your business needs.</p>
+  </div>
+</section>
+
+  <section class="intro" id="intro">
+  <div class="intro-content">
+    <div class="intro-text">
+      <h2>About Us</h2>
+      <p>
+        At Infinite Technology, we specialize in providing state-of-the-art technology services including software development, IT consulting, and cloud solutions. Our mission is to help businesses thrive in the digital age through innovation and expertise.
+      </p>
+    </div>
+    <div class="intro-image">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Technology team working together" />
+    </div>
+  </div>
+</section>
+
+  <section class="why-us" id="why-us">
+    <h2>Why Choose Us?</h2>
+    <ul>
+      <li>
+  <img src="https://img.icons8.com/ios-filled/48/33A1FD/innovation.png" alt="Innovation Icon" />
+  <h3>Innovative Solutions</h3>
+  <p>We stay ahead with the latest trends to deliver future-ready technology.</p>
+</li>
+<li>
+  <img src="https://img.icons8.com/ios-filled/48/33A1FD/teamwork.png" alt="Team Icon" />
+  <h3>Expert Team</h3>
+  <p>Our professionals bring experience and passion to every project.</p>
+</li>
+<li>
+  <img src="https://img.icons8.com/ios-filled/48/33A1FD/customer-support.png" alt="Customer Support Icon" />
+  <h3>Customer Focused</h3>
+  <p>Your goals are our priority — we tailor solutions that match your vision.</p>
+</li>
+
+    </ul>
+  </section>
+
+  <section class="video-overview" style="padding: 3rem 2rem; text-align: center; background: #22272A;">
+  <h2>Watch Our Company Overview</h2>
+  <video controls width="80%" style="max-width: 800px; border-radius: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.6);">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+    Sorry, your browser doesn't support embedded videos.
+  </video>
+</section>
+
+  <section class="cta-section">
+    <h2>Ready to Transform Your Business?</h2>
+    <a href="#contact">Contact Us</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Infinite Technology</h3>
+      <p>Building future-ready digital solutions across web, mobile, AI/ML, and immersive technologies.</p>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/"><i class="fas fa-angle-right"></i> Home</a></li>
+        <li><a href="/about"><i class="fas fa-angle-right"></i> About Us</a></li>
+        <li><a href="/services"><i class="fas fa-angle-right"></i> Services</a></li>
+        <li><a href="/contact"><i class="fas fa-angle-right"></i> Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i>A/F-43,amrapali complex,bopal cross road, near kotak mahindra bank, Ahemdabad-380058</li>
+        <li><i class="fas fa-envelope"></i>infinitetechnology06@gmail.com</li>
+        <li><i class="fas fa-phone"></i> +91 63594 80914</li>
+      </ul>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/share/1BcZkTHeeB/"><i class="fab fa-facebook-f"></i></a>
+        <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
+        <a href="www.linkedin.com/in/infinite-technologys-51aa6a35b"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/infinite._technologys/profilecard/?igsh=MXJ1cXdlZWtyZGE1aQ=="><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Infinite Technology. All Rights Reserved.
+  </div>
+</footer>
+
+<script>
+    const toggleButton = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+
+    toggleButton.addEventListener('click', () => {
+      navMenu.classList.toggle('show');
+    });
+  </script>
+
+</body>
+</html>
